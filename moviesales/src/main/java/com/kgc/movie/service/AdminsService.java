@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface AdminsService {
     Admins selectByName(String name);
-    List<Admins> selectAllByGrade(String grade, String name);
+    List<Admins> selectAllByGrade(String gradeid, String name);
     int update(Admins admins);
     int del(int id);
     int add(Admins admins);

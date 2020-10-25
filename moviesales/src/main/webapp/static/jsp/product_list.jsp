@@ -22,35 +22,33 @@
     </div>
     <div class="operate">
         <form>
-            <select class="inline-select">
+           <%-- <select class="inline-select">
                 <option>A店铺</option>
                 <option>B店铺</option>
-            </select>
+            </select>--%>
             <input type="text" class="textBox length-long" placeholder="输入产品名称..."/>
             <input type="button" value="查询" class="tdBtn"/>
         </form>
     </div>
     <table class="list-style Interlaced">
         <tr>
-            <th>ID编号</th>
-            <th>产品</th>
-            <th>名称</th>
-            <th>市场价</th>
-            <th>会员价</th>
-            <th>库存</th>
-            <th>精品</th>
-            <th>新品</th>
-            <th>热销</th>
-            <th>操作</th>
+            <td>ID编号</td>
+            <td>产品</td>
+            <td>名称</td>
+            <td>市场价</td>
+            <td>会员价</td>
+            <td>库存</td>
+            <td>商品类型</td>
+            <td>操作</td>
         </tr>
-        <tr>
+      <%--  <tr>
             <td>
      <span>
      <input type="checkbox" class="middle children-checkbox"/>
      <i>0</i>
      </span>
-            </td>
-            <td class="center pic-area"><img src="#" class="thumbnail"/></td>
+            </td>--%>
+           <%-- <td class="center pic-area"><img src="#" class="thumbnail"/></td>
             <td class="td-name">
                 <span class="ellipsis td-name block">这是产品或服务名称(宽度350px,样式自动截取，以省略号表示哦，程序可以处理“截取字符串”)</span>
             </td>
@@ -174,7 +172,7 @@
             <a>1</a>
             <a>最后一页</a>
         </div>
-    </div>
+    </div>--%>
 </div>
 </body>
 </html>

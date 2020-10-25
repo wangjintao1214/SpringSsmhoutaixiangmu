@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kgc.movie.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.kgc.movie.pojo.User" >
+<mapper namespace="com.kgc.movie.mapper.CommodityTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.kgc.movie.pojo.CommodityType" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="uname" property="uname" jdbcType="VARCHAR" />
-    <result column="upassword" property="upassword" jdbcType="VARCHAR" />
-    <result column="uphone" property="uphone" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, uname, upassword, uphone
+    id, name, num, unit
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kgc.movie.pojo.UserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kgc.movie.pojo.CommodityTypeExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from commodity_type
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from user
+    from commodity_type
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user
+    delete from commodity_type
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.kgc.movie.pojo.UserExample" >
-    delete from user
+  <delete id="deleteByExample" parameterType="com.kgc.movie.pojo.CommodityTypeExample" >
+    delete from commodity_type
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kgc.movie.pojo.User" >
-    insert into user (id, uname, upassword, 
-      uphone)
-    values (#{id,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR}, 
-      #{uphone,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.kgc.movie.pojo.CommodityType" >
+    insert into commodity_type (id, name, num, 
+      unit)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{unit,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.kgc.movie.pojo.User" >
-    insert into user
+  <insert id="insertSelective" parameterType="com.kgc.movie.pojo.CommodityType" >
+    insert into commodity_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="uname != null" >
-        uname,
+      <if test="name != null" >
+        name,
       </if>
-      <if test="upassword != null" >
-        upassword,
+      <if test="num != null" >
+        num,
       </if>
-      <if test="uphone != null" >
-        uphone,
+      <if test="unit != null" >
+        unit,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="uname != null" >
-        #{uname,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="upassword != null" >
-        #{upassword,jdbcType=VARCHAR},
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
       </if>
-      <if test="uphone != null" >
-        #{uphone,jdbcType=VARCHAR},
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.kgc.movie.pojo.UserExample" resultType="java.lang.Integer" >
-    select count(*) from user
+  <select id="countByExample" parameterType="com.kgc.movie.pojo.CommodityTypeExample" resultType="java.lang.Integer" >
+    select count(*) from commodity_type
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update user
+    update commodity_type
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.uname != null" >
-        uname = #{record.uname,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.upassword != null" >
-        upassword = #{record.upassword,jdbcType=VARCHAR},
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=INTEGER},
       </if>
-      <if test="record.uphone != null" >
-        uphone = #{record.uphone,jdbcType=VARCHAR},
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -162,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update user
+    update commodity_type
     set id = #{record.id,jdbcType=INTEGER},
-      uname = #{record.uname,jdbcType=VARCHAR},
-      upassword = #{record.upassword,jdbcType=VARCHAR},
-      uphone = #{record.uphone,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=INTEGER},
+      unit = #{record.unit,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.movie.pojo.User" >
-    update user
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.movie.pojo.CommodityType" >
+    update commodity_type
     <set >
-      <if test="uname != null" >
-        uname = #{uname,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="upassword != null" >
-        upassword = #{upassword,jdbcType=VARCHAR},
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
       </if>
-      <if test="uphone != null" >
-        uphone = #{uphone,jdbcType=VARCHAR},
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kgc.movie.pojo.User" >
-    update user
-    set uname = #{uname,jdbcType=VARCHAR},
-      upassword = #{upassword,jdbcType=VARCHAR},
-      uphone = #{uphone,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.kgc.movie.pojo.CommodityType" >
+    update commodity_type
+    set name = #{name,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

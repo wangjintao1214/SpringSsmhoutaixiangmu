@@ -1,6 +1,5 @@
 package com.kgc.movie.mapper;
 
-
 import com.kgc.movie.pojo.User;
 import com.kgc.movie.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;

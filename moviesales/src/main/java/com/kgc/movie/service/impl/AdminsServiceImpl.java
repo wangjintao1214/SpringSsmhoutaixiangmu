@@ -32,11 +32,11 @@ public class AdminsServiceImpl implements AdminsService{
     }
 
     @Override
-    public List<Admins> selectAllByGrade(String grade, String name) {
+    public List<Admins> selectAllByGrade(String gradeid, String name) {
         AdminsExample example=new AdminsExample();
         AdminsExample.Criteria criteria = example.createCriteria();
-        if(grade!=null&&grade.equals("0")==false){
-            criteria.andGradeEqualTo(Integer.parseInt(grade));
+        if(gradeid!=null&&gradeid.equals("0")==false){
+            criteria.andGradeidEqualTo(Integer.parseInt(gradeid));
         }
         if(name!=null&&name.isEmpty()==false){
             criteria.andNameEqualTo(name);

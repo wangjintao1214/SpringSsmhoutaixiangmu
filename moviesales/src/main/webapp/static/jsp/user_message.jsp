@@ -21,7 +21,7 @@
             <th>管理员回复</th>
             <th>操作</th>
         </tr>
-        <tr>
+        <%--<tr>
             <td class="center">DeathGhost</td>
             <td class="center">2015-04-18 10:39</td>
             <td class="center">未处理</td>
@@ -40,7 +40,7 @@
                         src="/static/images/icon_title.gif"/></a>
                 <a class="inline-block" title="移除"><img src="/static/images/icon_drop.gif"/></a>
             </td>
-        </tr>
+        </tr>--%>
     </table>
     <!-- BatchOperation -->
 </div>

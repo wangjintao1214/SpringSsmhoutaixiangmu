@@ -24,11 +24,9 @@
             <th>分类名称</th>
             <th>产品数量</th>
             <th>单位</th>
-            <th>是否显示</th>
-            <th>排序</th>
             <th>操作</th>
         </tr>
-        <tr>
+       <%-- <tr>
             <td>
                 <input type="checkbox"/>
                 <span>西餐</span>
@@ -89,7 +87,7 @@
             <a>1</a>
             <a>最后一页</a>
         </div>
-    </div>
+    </div>--%>
 </div>
 </body>
 </html>

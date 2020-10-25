@@ -18,7 +18,7 @@
     <div class="operate">
        <%-- <form action="/dosel" method="post">
         </form>--%>
-           <select class="inline-select" name="grade">
+           <select class="inline-select" name="gradeid">
                <option value="0">选择会员等级</option>
                <option value="1">白金会员</option>
                <option value="2">黄金会员</option>
@@ -60,10 +60,10 @@
     })
     function usersel() {
         $(".user tr:gt(0)").remove();
-        var grade=$("[name='grade']").val();
+        var gradeid=$("[name='gradeid']").val();
         var name=$("[name='name2']").val();
         var json={
-            grade:grade,
+            grade:gradeid,
             name:name
         }
         $.post("/dosel",json,function (result) {

@@ -16,12 +16,11 @@
     <table class="list-style Interlaced">
         <tr>
             <th>会员类型</th>
-            <th>等级图标</th>
             <th>等级名称</th>
             <th>等级折扣</th>
             <th>操作</th>
         </tr>
-        <tr>
+        <%--<tr>
             <td>
                 <img src="/static/images/user_02.png"/>
                 <span class="middle">普通用户组</span>
@@ -48,7 +47,7 @@
                     <img src="/static/images/icon_drop.gif"/>
                 </a>
             </td>
-        </tr>
+        </tr>--%>
     </table>
 </div>
 </body>

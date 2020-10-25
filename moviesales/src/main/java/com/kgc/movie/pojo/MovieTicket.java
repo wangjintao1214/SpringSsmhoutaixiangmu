@@ -82,18 +82,4 @@ public class MovieTicket {
     public void setMovieSeat(String movieSeat) {
         this.movieSeat = movieSeat == null ? null : movieSeat.trim();
     }
-
-    @Override
-    public String toString() {
-        return "MovieTicket{" +
-                "movieId=" + movieId +
-                ", userName='" + userName + '\'' +
-                ", movieYingchengid=" + movieYingchengid +
-                ", movieName='" + movieName + '\'' +
-                ", movieDate=" + movieDate +
-                ", movieRoom='" + movieRoom + '\'' +
-                ", moviePrice=" + moviePrice +
-                ", movieSeat='" + movieSeat + '\'' +
-                '}';
-    }
 }

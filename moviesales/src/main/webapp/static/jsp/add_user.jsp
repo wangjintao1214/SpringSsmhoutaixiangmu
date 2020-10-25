@@ -39,7 +39,7 @@
             <tr>
                 <td style="text-align:right;">等级：</td>
                 <td>
-                    <select name="grade" class="textBox length-middle">
+                    <select name="gradeid" class="textBox length-middle">
                         <option value="0">选择会员等级</option>
                         <option value="1">白金会员</option>
                         <option value="2">黄金会员</option>

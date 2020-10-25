@@ -27,9 +27,9 @@ public class AdminsController {
     }
     @RequestMapping("/dosel")
     @ResponseBody
-    public Map<Object,Object> dosel(String grade, String name, Model model){
+    public Map<Object,Object> dosel(String gradeid, String name, Model model){
         Map<Object,Object> map=new HashMap<>();
-        List<Admins> list = adminsService.selectAllByGrade(grade, name);
+        List<Admins> list = adminsService.selectAllByGrade(gradeid, name);
         if(list.size()>0){
             map.put("status","true");
             map.put("list",list);

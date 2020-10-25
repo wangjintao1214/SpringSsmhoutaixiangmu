@@ -36,10 +36,10 @@
             <tr>
                 <td style="text-align:right;">会员等级：</td>
                 <td>
-                    <select class="textBox" name="grade">
+                    <select class="textBox" name="gradeid">
                         <option value="0">请选择会员等级</option>
-                        <option <c:if test="${admins.grade==1}"> selected </c:if> value="1">白金会员</option>
-                        <option <c:if test="${admins.grade==2}"> selected </c:if> value="2">黄金会员</option>
+                        <option <c:if test="${admins.gradeid==1}"> selected </c:if> value="1">白金会员</option>
+                        <option <c:if test="${admins.gradeid==2}"> selected </c:if> value="2">黄金会员</option>
                     </select>
                 </td>
             </tr>
