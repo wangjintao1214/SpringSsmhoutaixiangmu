@@ -17,67 +17,46 @@
     <div class="page-title">
         <span class="modular fl"><i></i><em>添加分类</em></span>
     </div>
-
+    <form action="/add_category" method="post">
     <table class="list-style">
         <tr>
             <td style="text-align:right;width:15%;">分类名称：</td>
             <td>
-                <input type="text" class="textBox"/>
+                <input type="text" class="textBox" name="name"/>
             </td>
         </tr>
         <tr>
-            <td style="text-align:right;width:10%;">上级分类：</td>
+            <td style="text-align:right;width:15%;">产品数量：</td>
             <td>
-                <select class="textBox">
-                    <option>顶级分类</option>
-                    <option>某分类</option>
-                </select>
+                <input type="text" class="textBox" name="num"/>
             </td>
         </tr>
         <tr>
-            <td style="text-align:right;">数量单位：</td>
+            <td style="text-align:right;width:15%;">单位：</td>
             <td>
-                <input type="text" class="textBox length-short"/>
+                <input type="text" class="textBox" name="unit"/>
             </td>
         </tr>
         <tr>
-            <td style="text-align:right;">排序：</td>
-            <td>
-                <input type="text" class="textBox length-short"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">是否显示：</td>
-            <td>
-                <input type="radio" name="show" id="yes"/>
-                <label for="yes">是</label>
-                <input type="radio" name="show" id="no"/>
-                <label for="no">否</label>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">分类页面标题：</td>
-            <td>
-                <input type="text" class="textBox length-long"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">分类页面关键词：</td>
-            <td>
-                <input type="text" class="textBox length-long"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right;">分类页面描述：</td>
-            <td>
-                <textarea class="textarea"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:right;"></td>
+            <td style="text-align:right; color:red;"></td>
             <td><input type="submit" value="保存" class="tdBtn"/></td>
         </tr>
+        <span style="text-align:right;color: red">${mgs1}</span>
     </table>
+    </form>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="/static/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript">
+    $("form").submit(function () {
+        var name =$("[name='name']").val();
+        var num=$("[name='num']").val();
+        var unit=$("[name='unit']").val();
+        if(name==""||num==""||unit==""){
+            alert("请填写完整信息！！！");
+            return false;
+        }
+        return true;
+    })
+</script>
