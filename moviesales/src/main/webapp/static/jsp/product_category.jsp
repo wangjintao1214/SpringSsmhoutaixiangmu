@@ -6,11 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>产品分类</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/static/style/adminStyle.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="/static/style/adminStyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="wrap">
@@ -26,68 +28,47 @@
             <th>单位</th>
             <th>操作</th>
         </tr>
-       <%-- <tr>
-            <td>
-                <input type="checkbox"/>
-                <span>西餐</span>
-            </td>
-            <td class="center">1</td>
-            <td class="center">盘</td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center"><input type="text" value="0" style="width:50px;text-align:center;"/></td>
-            <td class="center"><a class="block" title="移除"><img src="/static/images/icon_trash.gif"/></a></td>
-        </tr>
+        <c:forEach items="${pageInfo.list}" var="list">
         <tr>
-            <td style="text-indent:2em;">
-                <input type="checkbox"/>
-                <span>面包</span>
-            </td>
-            <td class="center">3</td>
-            <td class="center">盘</td>
-            <td class="center"><img src="/static/images/no.gif"/></td>
-            <td class="center"><input type="text" value="0" style="width:50px;text-align:center;"/></td>
-            <td class="center"><a class="block" title="移除"><img src="/static/images/icon_trash.gif"/></a></td>
+            <%--  <td>
+                  <input type="checkbox"/>
+                  <span>西餐</span>
+              </td>--%>
+            <td class="center">${list.name}</td>
+            <td class="center">${list.num}</td>
+            <td class="center">${list.unit}</td>
+            <%-- <td class="center"><img src="/static/images/yes.gif"/></td>
+             <td class="center"><input type="text" value="0" style="width:50px;text-align:center;"/></td>--%>
+            <td class="center"><a class="block" title="移除" href="/del_category?id=${list.id}"><img src="/static/images/icon_trash.gif"/></a></td>
         </tr>
-
-        <tr>
-            <td>
-                <input type="checkbox"/>
-                <span>西餐</span>
-            </td>
-            <td class="center">1</td>
-            <td class="center">盘</td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center"><input type="text" value="0" style="width:50px;text-align:center;"/></td>
-            <td class="center"><a class="block" title="移除"><img src="/static/images/icon_trash.gif"/></a></td>
-        </tr>
-        <tr>
-            <td style="text-indent:2em;">
-                <input type="checkbox"/>
-                <span>面包</span>
-            </td>
-            <td class="center">3</td>
-            <td class="center">盘</td>
-            <td class="center"><img src="/static/images/no.gif"/></td>
-            <td class="center"><input type="text" value="0" style="width:50px;text-align:center;"/></td>
-            <td class="center"><a class="block" title="移除"><img src="/static/images/icon_trash.gif"/></a></td>
-        </tr>
+        </c:forEach>
     </table>
-
-    <!-- BatchOperation -->
+    <span style="text-align:right;color: red">${mgs}</span>
+    <div class="turnPage center fr">
+        <a>共${pageInfo.total}条  第${pageInfo.pageNum}/${pageInfo.pages}页</a>
+        <a href="/product_category?pageIndex=${pageInfo.firstPage}">首页</a>
+        <c:if test="${pageInfo.hasPreviousPage}">
+            <a href="/product_category?pageIndex=${pageInfo.prePage}">上一页</a>
+        </c:if>
+        <c:forEach items="${pageInfo.navigatepageNums}" var="i">
+            <a href="/product_category?pageIndex=${i}">${i}</a>
+        </c:forEach>
+        <c:if test="${pageInfo.hasNextPage}">
+            <a href="/product_category?pageIndex=${pageInfo.nextPage}">下一页</a>
+        </c:if>
+        <a href="/product_category?pageIndex=${pageInfo.lastPage}">尾页</a>
+    </div>
+    <%--<!-- BatchOperation -->
     <div style="overflow:hidden;">
         <!-- Operation -->
         <div class="BatchOperation fl">
             <input type="checkbox" id="del"/>
             <label for="del" class="btnStyle middle">全选</label>
             <input type="button" value="批量删除" class="btnStyle"/>
-        </div>
-        <!-- turn page -->
-        <div class="turnPage center fr">
-            <a>第一页</a>
-            <a>1</a>
-            <a>最后一页</a>
-        </div>
-    </div>--%>
+        </div>--%>
+    <!-- turn page -->
+
+</div>
 </div>
 </body>
 </html>
