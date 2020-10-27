@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>会员等级</title>
@@ -11,7 +12,7 @@
 <div class="wrap">
     <div class="page-title">
         <span class="modular fl"><i class="user"></i><em>会员等级</em></span>
-        <span class="modular fr"><a href="/static/jsp/add_user_rank.jsp" class="pt-link-btn">+添加会员等级</a></span>
+        <span class="modular fr"><a href="/tohyadd" class="pt-link-btn">+添加会员等级</a></span>
     </div>
     <table class="list-style Interlaced">
         <tr>
@@ -20,6 +21,17 @@
             <th>等级折扣</th>
             <th>操作</th>
         </tr>
+        <c:forEach items="${requestScope.list}" var="list">
+            <tr>
+                <td>${list.type}</td>
+                <td>${list.grade}</td>
+                <td>${list.gradeIscount}</td>
+                <td>
+                    <a href="/tohyupd?id=${list.id}" class="inline-block" title="编辑"><img src="/static/images/icon_edit.gif"/></a>
+                    <a href="/hydel?id=${list.id}" class="inline-block" title="删除"><img src="/static/images/icon_drop.gif"/></a>
+                </td>
+            </tr>
+        </c:forEach>
         <%--<tr>
             <td>
                 <img src="/static/images/user_02.png"/>

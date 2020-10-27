@@ -48,7 +48,7 @@
             <ul class="menu-children">
                 <li><a href="/tosels" title="会员列表" target="mainCont">会员列表</a></li>
                 <li><a href="/static/jsp/add_user.jsp" title="添加会员" target="mainCont">添加会员</a></li>
-                <li><a href="/static/jsp/user_rank.jsp" title="会员等级" target="mainCont">会员等级</a></li>
+                <li><a href="/hyselect" title="会员等级" target="mainCont">会员等级</a></li>
                 <li><a href="/static/jsp/user_message.jsp" title="会员留言" target="mainCont">会员留言</a></li>
             </ul>
         </li>
