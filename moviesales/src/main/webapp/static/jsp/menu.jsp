@@ -34,7 +34,7 @@
         </li>
         <li>
             <ul class="menu-children">
-                <li><a href="/static/jsp/product_list.jsp" title="商品列表" target="mainCont">商品列表</a></li>
+                <li><a href="/showCommodity" title="商品列表" target="mainCont">商品列表</a></li>
                 <li><a href="/product_category" title="商品分类" target="mainCont">商品分类</a></li>
                 <%--<li><a href="/static/jsp/recycle_bin.jsp" title="商品分类" target="mainCont">商品回收站</a></li>--%>
             </ul>
