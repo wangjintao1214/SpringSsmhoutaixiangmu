@@ -19,7 +19,7 @@
         <span class="modular fl"><i class="add"></i><em>编辑/添加产品</em></span>
         <span class="modular fr"><a href="/static/jsp/product_list.jsp" class="pt-link-btn">产品列表</a></span>
     </div>
-    <form action="/doUpdateCommodity" method="post" enctype="multipart/form-data" content="multipart/form-data"; >
+    <form action="/insertCommodity" method="post" enctype="multipart/form-data" content="multipart/form-data"; >
         <table class="list-style">
             <%-- <tr>
                  <td style="text-align:right;width:15%;" typeof="hidden">id:</td>
@@ -66,6 +66,15 @@
                     <span>盘</span>
                 </td>
             </tr>
+                <tr>
+                    <td style="text-align:right;">分类：</td>
+                    <td>
+                        <select name="type">
+                            <option value="1">零食</option>
+                            <option value="9">饮料</option>
+                        </select>
+                    </td>
+                </tr>
             <%--<tr>
                 <td style="text-align:right;">产品关键词：</td>
                 <td><input type="text" class="textBox length-long"/></td>
@@ -122,8 +131,8 @@
             <tr>
                 <td style="text-align:right;"></td>
                 <%--<td><input type="submit" value="发布新商品" class="tdBtn"/></td>--%>
-                <td><input type="submit" value="修改商品" class="tdBtn"/>
-                  <%-- <input type="button" value="添加商品" class="tdBtn" onclick="addCom()"/>--%>
+                <td><input type="submit" value="新增商品" class="tdBtn"/>
+
                 </td>
             </tr>
         </table>

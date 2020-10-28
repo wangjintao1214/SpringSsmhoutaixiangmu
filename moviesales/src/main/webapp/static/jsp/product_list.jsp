@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: LHX
@@ -9,8 +10,8 @@
 <html>
 <head>
     <title>产品列表</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/static/style/adminStyle.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="/static/style/adminStyle.css" rel="stylesheet" type="text/css"/>
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/public.js"></script>
 </head>
@@ -18,22 +19,22 @@
 <div class="wrap">
     <div class="page-title">
         <span class="modular fl"><i></i><em>产品列表</em></span>
-        <span class="modular fr"><a href="/static/jsp/edit_product.jsp" class="pt-link-btn">+添加商品</a></span>
+        <span class="modular fr"><a href="/static/jsp/edit_product1.jsp" class="pt-link-btn">+添加商品</a></span>
     </div>
     <div class="operate">
         <form>
-           <%-- <select class="inline-select">
-                <option>A店铺</option>
-                <option>B店铺</option>
-            </select>--%>
-            <input type="text" class="textBox length-long" placeholder="输入产品名称..."/>
-            <input type="button" value="查询" class="tdBtn"/>
+            <%-- <select class="inline-select">
+                 <option>A店铺</option>
+                 <option>B店铺</option>
+             </select>--%>
+            <input type="text" name="productName" class="textBox length-long" placeholder="输入产品名称..."/>
+            <input type="button" value="查询" class="tdBtn" onclick="show()"/>
         </form>
     </div>
     <table class="list-style Interlaced">
         <tr>
             <td>ID编号</td>
-            <td>产品</td>
+            <%--<td>产品</td>--%>
             <td>名称</td>
             <td>市场价</td>
             <td>会员价</td>
@@ -41,138 +42,52 @@
             <td>商品类型</td>
             <td>操作</td>
         </tr>
-      <%--  <tr>
-            <td>
-     <span>
-     <input type="checkbox" class="middle children-checkbox"/>
-     <i>0</i>
-     </span>
+        <c:forEach var="commodity" items="${pageInfo.list}">
+        <tr>
+            <td>${commodity.id}</td>
+            <%--<td>
+                <div><img class="commodity_img" alt="" src="/static/uploadFiles/${commodity.picture}"/></div>
             </td>--%>
-           <%-- <td class="center pic-area"><img src="#" class="thumbnail"/></td>
-            <td class="td-name">
-                <span class="ellipsis td-name block">这是产品或服务名称(宽度350px,样式自动截取，以省略号表示哦，程序可以处理“截取字符串”)</span>
-            </td>
-            <td class="center">
-     <span>
-      <i>￥</i>
-      <em>0.00</em>
-     </span>
-            </td>
-            <td class="center">
-     <span>
-      <i>￥</i>
-      <em>0.00</em>
-     </span>
-            </td>
-            <td class="center">
-     <span>
-      <em>589</em>
-      <i>件</i>
-     </span>
-            </td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center"><img src="/static/images/no.gif"/></td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center">
-                <a href="http://www.baidu.com/跳转至前台页面哦" title="查看" target="_blank"><img src="/static/images/icon_view.gif"/></a>
-                <a href="/static/jsp/edit_product.jsp" title="编辑"><img src="/static/images/icon_edit.gif"/></a>
-                <a title="删除"><img src="/static/images/icon_drop.gif"/></a>
+            <td>${commodity.name}</td>
+            <td>${commodity.marketValue}</td>
+            <td>${commodity.membershipPrice}</td>
+            <td>${commodity.num}</td>
+            <td>${commodity.type}</td>
+            <td><a href="javascript:void(0)" onclick="update(${commodity.id})">修改</a>
+                <a href="javascript:void(0)" onclick="del(${commodity.id})">删除</a>
             </td>
         </tr>
-
-        <tr>
-            <td>
-     <span>
-     <input type="checkbox" class="middle children-checkbox"/>
-     <i>0</i>
-     </span>
-            </td>
-            <td class="center pic-area"><img src="#" class="thumbnail"/></td>
-            <td class="td-name">
-                <span class="ellipsis td-name block">这是产品或服务名称(宽度350px,样式自动截取，以省略号表示哦，程序可以处理“截取字符串”)</span>
-            </td>
-            <td class="center">
-     <span>
-      <i>￥</i>
-      <em>0.00</em>
-     </span>
-            </td>
-            <td class="center">
-     <span>
-      <i>￥</i>
-      <em>0.00</em>
-     </span>
-            </td>
-            <td class="center">
-     <span>
-      <em>589</em>
-      <i>件</i>
-     </span>
-            </td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center"><img src="/static/images/no.gif"/></td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center">
-                <a title="查看" target="_blank"><img src="/static/images/icon_view.gif"/></a>
-                <a title="编辑"><img src="/static/images/icon_edit.gif"/></a>
-                <a title="删除"><img src="/static/images/icon_drop.gif"/></a>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-     <span>
-     <input type="checkbox" class="middle children-checkbox"/>
-     <i>0</i>
-     </span>
-            </td>
-            <td class="center pic-area"><img src="#" class="thumbnail"/></td>
-            <td class="td-name">
-                <span class="ellipsis td-name block">这是产品或服务名称(宽度350px,样式自动截取，以省略号表示哦，程序可以处理“截取字符串”)</span>
-            </td>
-            <td class="center">
-     <span>
-      <i>￥</i>
-      <em>0.00</em>
-     </span>
-            </td>
-            <td class="center">
-     <span>
-      <i>￥</i>
-      <em>0.00</em>
-     </span>
-            </td>
-            <td class="center">
-     <span>
-      <em>589</em>
-      <i>件</i>
-     </span>
-            </td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center"><img src="/static/images/no.gif"/></td>
-            <td class="center"><img src="/static/images/yes.gif"/></td>
-            <td class="center">
-                <a title="查看" target="_blank"><img src="/static/images/icon_view.gif"/></a>
-                <a title="编辑"><img src="/static/images/icon_edit.gif"/></a>
-                <a title="删除"><img src="/static/images/icon_drop.gif"/></a>
-            </td>
-        </tr>
-    </table>
-    <!-- BatchOperation -->
-    <div style="overflow:hidden;">
-        <!-- Operation -->
-        <div class="BatchOperation fl">
-            <input type="checkbox" id="del"/>
-            <label for="del" class="btnStyle middle">全选</label>
-            <input type="button" value="批量删除" class="btnStyle"/>
+        </c:forEach>
+        <div>
+            <a href="showCommodity?pageNum=${pageInfo.firstPage}">首页
+            </a>
+            <c:if test="${pageInfo.hasPreviousPage}">
+                <a href="showCommodity?pageNum=${pageInfo.prePage}">上一页</a>
+            </c:if>
+            <c:forEach items="${pageInfo.navigatepageNums}" var="i">
+                <a href="showCommodity?pageNum=${i}">${i}</a>
+            </c:forEach>
+            <c:if test="${pageInfo.hasNextPage}">
+                <a href="showCommodity?pageNum=${pageInfo.nextPage}">下一页</a>
+            </c:if>
         </div>
-        <!-- turn page -->
-        <div class="turnPage center fr">
-            <a>第一页</a>
-            <a>1</a>
-            <a>最后一页</a>
-        </div>
-    </div>--%>
 </div>
+<div>${msg}</div>
+<script>
+    function update(id) {
+        alert(id);
+        location.href = "/updateCommdity/" + id;
+
+    }
+
+    function show() {//按照条件查询
+        location.href = "/showCommodity";
+    }
+
+    function del(id) {
+        alert(id);
+        location.href = "/delCommodity/" + id;
+    }
+</script>
 </body>
 </html>
