@@ -3,9 +3,12 @@ package com.kgc.movie.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kgc.movie.mapper.CommodityMapper;
+import com.kgc.movie.mapper.CommodityTypeMapper;
 import com.kgc.movie.pojo.Commodity;
 import com.kgc.movie.pojo.CommodityExample;
+import com.kgc.movie.pojo.CommodityType;
 import com.kgc.movie.service.CommodityService;
+import com.kgc.movie.service.CommodityTypeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,21 +19,29 @@ import java.util.List;
  * @create 2020-10-27 13:15
  */
 @Service
-public class CommodityServiceImpl implements CommodityService{
+public class CommodityServiceImpl implements CommodityService {
 
     @Resource
     CommodityMapper commodityMapper;
+    @Resource
+    CommodityTypeMapper CommodityTypeMapper;
+
     @Override
-    public PageInfo<Commodity> selectByPage(Integer pageNum,String name) {
+    public PageInfo<Commodity> selectByPage(Integer pageNum, String name) {
         CommodityExample commodityExample = new CommodityExample();
-        if(name!=null){
+        if (name != null) {
             CommodityExample.Criteria criteria = commodityExample.createCriteria();
-            criteria.andNameLike("%"+name+"%");
+            criteria.andNameLike("%" + name + "%");
         }
-        int pageSize=1;
-        PageHelper.startPage(pageNum,pageSize);
+        int pageSize = 1;
+        PageHelper.startPage(pageNum, pageSize);
         List<Commodity> commodities = commodityMapper.selectByExample(commodityExample);
-        PageInfo<Commodity> pageInfo=new PageInfo<>(commodities);
+        for (Commodity commodity : commodities) {
+            CommodityType commodityType = CommodityTypeMapper.selectByPrimaryKey(commodity.getType());
+            commodity.setNumName(commodityType.getName());
+        }
+
+        PageInfo<Commodity> pageInfo = new PageInfo<>(commodities);
         return pageInfo;
     }
 
@@ -42,7 +53,7 @@ public class CommodityServiceImpl implements CommodityService{
 
     @Override
     public int updateCommdity(Commodity commodity) {
-        return  commodityMapper.updateByPrimaryKeySelective(commodity);
+        return commodityMapper.updateByPrimaryKeySelective(commodity);
     }
 
     @Override

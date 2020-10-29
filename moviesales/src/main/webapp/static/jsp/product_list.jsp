@@ -52,7 +52,7 @@
             <td>${commodity.marketValue}</td>
             <td>${commodity.membershipPrice}</td>
             <td>${commodity.num}</td>
-            <td>${commodity.type}</td>
+            <td>${commodity.numName}</td>
             <td><a href="javascript:void(0)" onclick="update(${commodity.id})">修改</a>
                 <a href="javascript:void(0)" onclick="del(${commodity.id})">删除</a>
             </td>

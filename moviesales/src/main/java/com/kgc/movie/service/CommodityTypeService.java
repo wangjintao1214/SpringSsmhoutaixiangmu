@@ -7,6 +7,7 @@ import java.util.List;
 public interface CommodityTypeService {
     List<CommodityType> selectAll();
 
+    CommodityType selectById(int id);
     int add(CommodityType commodityType);
 
     int del(int id);

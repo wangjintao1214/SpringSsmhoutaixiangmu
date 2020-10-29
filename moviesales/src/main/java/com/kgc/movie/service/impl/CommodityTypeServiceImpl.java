@@ -9,12 +9,18 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service("commodityTypeService")
-public class CommodityTypeServiceImpl implements CommodityTypeService{
-@Resource
+public class CommodityTypeServiceImpl implements CommodityTypeService {
+    @Resource
     CommodityTypeMapper commodityTypeMapper;
+
     @Override
     public List<CommodityType> selectAll() {
         return commodityTypeMapper.selectByExample(null);
+    }
+
+    @Override
+    public CommodityType selectById(int id) {
+        return commodityTypeMapper.selectByPrimaryKey(id);
     }
 
     @Override

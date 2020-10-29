@@ -11,6 +11,9 @@ public class Commodity {
 
     private Integer num;
 
+    private String numName;
+
+
     private Integer type;
 
     private String picture;
@@ -69,5 +72,13 @@ public class Commodity {
 
     public void setPicture(String picture) {
         this.picture = picture == null ? null : picture.trim();
+    }
+
+    public String getNumName() {
+        return numName;
+    }
+
+    public void setNumName(String numName) {
+        this.numName = numName;
     }
 }

@@ -2,6 +2,7 @@ package com.kgc.movie.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.kgc.movie.pojo.Commodity;
+import com.kgc.movie.service.CommodityTypeService;
 import com.kgc.movie.service.impl.CommodityServiceImpl;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.math.RandomUtils;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.annotation.Resources;
 import javax.naming.Name;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -27,9 +29,12 @@ public class CommodityController {
     @Resource
     CommodityServiceImpl commodityService;
 
+    @Resource
+    CommodityTypeService commodityTypeService;
     @RequestMapping("/showCommodity")
-    public String toShowCommodity(@RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,String productName, Model model) {
+    public String toShowCommodity(@RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum, String productName, Model model) {
         PageInfo<Commodity> pageInfo = commodityService.selectByPage(pageNum, productName);
+        pageInfo.getList();
         model.addAttribute("pageInfo", pageInfo);
         return "product_list";
     }
@@ -81,7 +86,7 @@ public class CommodityController {
     }
 
     @RequestMapping("/insertCommodity")//添加
-    public String insertCommodity(Commodity commodity,Model model,HttpServletRequest request,MultipartFile product_img){
+    public String insertCommodity(Commodity commodity, Model model, HttpServletRequest request, MultipartFile product_img) {
         String path = request.getSession().getServletContext().getRealPath("/static/uploadFiles");
         //获取原文件名
         String oldFileName = product_img.getOriginalFilename();
@@ -112,8 +117,9 @@ public class CommodityController {
             return "redirect:/showCommodity";
         }
     }
+
     @RequestMapping("/delCommodity/{id}")//删除
-    public String delCommodity(@PathVariable("id") int id,Model model){
+    public String delCommodity(@PathVariable("id") int id, Model model) {
         int result = commodityService.delCommodity(id);
         if (result > 0) {
             model.addAttribute("msg", "删除成功");
