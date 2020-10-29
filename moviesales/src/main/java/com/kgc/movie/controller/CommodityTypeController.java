@@ -30,6 +30,7 @@ public class CommodityTypeController {
         PageHelper.startPage(pageNum,pageSize);
         PageInfo<CommodityType> pageInfo=new PageInfo<>(list);
         model.addAttribute("pageInfo",pageInfo);
+        session.invalidate();
         return "product_category";
     }
 
@@ -52,7 +53,7 @@ public class CommodityTypeController {
             session.setAttribute("mgs","删除成功");
             return "redirect:product_category";
         }else{
-            session.setAttribute("mgs1","删除失败");
+            session.setAttribute("mgs","删除失败");
             return "redirect:product_category";
         }
     }

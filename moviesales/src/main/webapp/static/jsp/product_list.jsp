@@ -34,7 +34,7 @@
     <table class="list-style Interlaced">
         <tr>
             <td>ID编号</td>
-            <%--<td>产品</td>--%>
+            <td>产品</td>
             <td>名称</td>
             <td>市场价</td>
             <td>会员价</td>
@@ -45,20 +45,23 @@
         <c:forEach var="commodity" items="${pageInfo.list}">
         <tr>
             <td>${commodity.id}</td>
-            <%--<td>
-                <div><img class="commodity_img" alt="" src="/static/uploadFiles/${commodity.picture}"/></div>
-            </td>--%>
+            <td>
+                <div><img class="commodity_img" alt="" style="width: 80px" src="/static/uploadFiles/${commodity.picture}"/></div>
+            </td>
             <td>${commodity.name}</td>
             <td>${commodity.marketValue}</td>
             <td>${commodity.membershipPrice}</td>
             <td>${commodity.num}</td>
             <td>${commodity.type}</td>
-            <td><a href="javascript:void(0)" onclick="update(${commodity.id})">修改</a>
-                <a href="javascript:void(0)" onclick="del(${commodity.id})">删除</a>
+            <td><a href="javascript:void(0)" onclick="update(${commodity.id})" title="编辑"><img
+                    src="/static/images/icon_edit.gif"/></a>
+                <a href="javascript:void(0)" onclick="del(${commodity.id})" title="删除" ><img src="/static/images/icon_drop.gif"/></a>
             </td>
         </tr>
         </c:forEach>
-        <div>
+    </table>
+        <div  class="turnPage center fr">
+            <a>共${pageInfo.total}条  第${pageInfo.pageNum}/${pageInfo.pages}页</a>
             <a href="showCommodity?pageNum=${pageInfo.firstPage}">首页
             </a>
             <c:if test="${pageInfo.hasPreviousPage}">
@@ -70,6 +73,7 @@
             <c:if test="${pageInfo.hasNextPage}">
                 <a href="showCommodity?pageNum=${pageInfo.nextPage}">下一页</a>
             </c:if>
+            <a href="/showCommodity?pageNum=${pageInfo.lastPage}">尾页</a>
         </div>
 </div>
 <div>${msg}</div>
